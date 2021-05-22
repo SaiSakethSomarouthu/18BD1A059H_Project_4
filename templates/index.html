@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo1.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+    <title>New Application for ePass</title>
+</head>
+<body background="{{url_for('static', filename='background.svg')}}" style="padding: 0; width: 100%; height: 100%;background-repeat: no-repeat;background-size: 100%;">
+<div>
+    <img style="float: left;margin-left: 30px;width: 120px;height: 120px" src="{{ url_for('static', filename='logo2.png') }}" alt="my GOV">
+    <center><h1 style="position: relative;top: 40px; right: 80px">COVID - 19 Lockdown ePass - 2021</h1></center>
+</div>
+<br>
+<div style="width: 590px" class="container mt-5 mb-4 d-flex justify-content-center">
+    <div class="card px-1 py-4">
+        <div class="card-body">
+            <h1 class="card-title text-center mb-3">New Application for ePass</h1>
+            <h6 class="information mt-4">Please provide following information</h6>
+            <form action="/verify" method="post">
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <input class="form-control" type="text" name="first_name" id="first_name" onchange="firstName()" placeholder="First name" required> </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group"> <input class="form-control" type="text" id="last_name" onchange="lastName()" name="last_name" placeholder="Last name" required> </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group"> <input class="form-control" type="number" id="aadhaar_number" name="aadhaar_number" onchange="aadhaarNumber()" placeholder="Aadhaar number" required> </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="from_state">State</label>
+                            <select class="form-control" name="from_state" id="from_state" onchange="getFromData()" required>
+                                <option class="form-control" value="">Select</option>
+                                {% for state in data: %}
+                                <option class="form-control" value={{state}}>{{state}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="from_district">District</label>
+                            <select class="form-control" name="from_district" id="from_district" required>
+                                <option class="form-control" value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="to_state">State</label>
+                            <select class="form-control" name="to_state" id="to_state" onchange="getToData()" required>
+                                <option class="form-control" value="">Select</option>
+                                {% for state in data: %}
+                                <option class="form-control" value={{state}}>{{state}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="to_district">District</label>
+                            <select class="form-control" name="to_district" id="to_district" onchange="check()" required>
+                                <option class="form-control" value="">Select</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group"> <input class="form-control" type="number" id="mobile_number" name="mobile_number" onchange="mobileNumber()" placeholder="Mobile number" required> </div>
+                    </div>
+                </div>
+            </div>
+                <h6 class="information mt-4">Pass validity period</h6>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="from_date">From</label>
+                            <input class="form-control" id="from_date" type="date" onchange="fromDate()" name="from_date" required> </div>
+                    </div>
+                </div>
+            </div>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="to_date">To</label>
+                            <input class="form-control" type="date" id="to_date" onchange="toDate()" name="to_date" required> </div>
+                    </div>
+                </div>
+            </div>
+                <div class=" d-flex flex-column mt-3 mb-3"> <small class="agree-text">
+                    <input type="checkbox" required> I acknowledge that I am fully aware that in case the information furnished by me is found to be incorrect, I shall be liable for prosecution under section 177 & 191 of the Indian Penal Code.
+                </small>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block confirm-button">Confirm</button>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+    function firstName(){
+        var name = /^[A-Za-z]+$/
+        if(!first_name.value.match(name)){
+            alert("Invalid first name")
+            first_name.value = ""
+        }
+    }
+    function lastName(){
+        var name = /^[A-Za-z]+$/
+        if(!last_name.value.match(name)){
+            alert("Invalid last name")
+            last_name.value = ""
+        }
+    }
+    function mobileNumber(){
+        var number = /^\d{10}$/
+        if(!mobile_number.value.match(number)){
+            alert("Invalid mobile number")
+            mobile_number.value = ""
+        }
+    }
+    function aadhaarNumber(){
+        var number = /^\d{12}$/
+        if(!aadhaar_number.value.match(number)){
+            alert("Invalid aadhaar number")
+            aadhaar_number.value = ""
+        }
+    }
+    function fromDate(){
+        var date = new Date().toLocaleDateString()
+        var d1 = date.split("/")
+        var d2 = from_date.value.split("-")
+        if(Number.parseInt(d2[0]) < Number.parseInt(d1[2])){
+            alert("Invalid date")
+            from_date.value = ""
+            return
+        }
+        if(Number.parseInt(d2[0]) == Number.parseInt(d1[2])){
+            if(Number.parseInt(d2[1]) < Number.parseInt(d1[0])){
+                alert("Invalid date")
+                from_date.value = ""
+                return
+            }
+            if(Number.parseInt(d2[1]) == Number.parseInt(d1[0])){
+                if(Number.parseInt(d2[2]) < Number.parseInt(d1[1])){
+                    alert("Invalid date")
+                    from_date.value = ""
+                    return
+                }
+            }
+        }
+    }
+    function toDate(){
+        if(from_date.value == ""){
+            alert("Enter from date")
+            to_date.value = ""
+            return
+        }
+        if(to_date.value < from_date.value){
+            alert("Invalid date")
+            from_date.value = ""
+            to_date.value = ""
+        }
+    }
+    function getFromData(){
+        document.getElementById("from_district").innerHTML = null
+        var option = document.createElement("option")
+        option.text = "Select"
+        option.value = ""
+        document.getElementById("from_district").add(option)
+        var list = JSON.parse('{{data | tojson}}')
+        for(district of list[document.getElementById("from_state").value]){
+            var option = document.createElement("option")
+            option.text = district
+            document.getElementById("from_district").add(option)
+        }
+    }
+    function getToData(){
+        document.getElementById("to_district").innerHTML = null
+        var option = document.createElement("option")
+        option.text = "Select"
+        option.value = ""
+        document.getElementById("to_district").add(option)
+        var list = JSON.parse('{{data | tojson}}')
+        for(district of list[document.getElementById("to_state").value]){
+            var option = document.createElement("option")
+            option.text = district
+            document.getElementById("to_district").add(option)
+        }
+    }
+    function check(){
+        if(document.getElementById("from_state").value == document.getElementById("to_state").value && document.getElementById("from_district").value == document.getElementById("to_district").value){
+            alert("Source and destination cannot be same.")
+            document.getElementById("from_district").selectedIndex = -1
+            document.getElementById("to_district").selectedIndex = -1
+        }
+    }
+</script>
+</body>
+</html>

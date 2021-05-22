@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='logo1.png') }}" type="image/x-icon">
+    <link rel="stylesheet" href="{{ url_for('static', filename='font-awesome.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
+    <title>ePass Application Status</title>
+</head>
+<body background="{{ url_for('static', filename='background.svg') }}" style="padding: 0; width: 100%; height: 100%;background-repeat: no-repeat;background-size: 100%;">
+<div>
+    <img style="float: left;margin-left: 30px;width: 120px;height: 120px" src="{{ url_for('static', filename='logo2.png') }}" alt="my GOV">
+    <center><h1 style="position: relative;top: 40px; right: 80px">COVID - 19 Lockdown ePass - 2021</h1></center>
+</div>
+<br>
+<div style="width: 590px" class="container mt-5 mb-4 d-flex justify-content-center">
+    <div class="card px-1 py-4">
+        <div class="card-body">
+            <h1 class="card-title text-center mb-3">ePass Application Status</h1>
+                <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="name">Name</label>
+                            <h2 class="form-control" style="overflow: auto" id="name">{{var1}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="aadhaar_number">Aadhaar number</label>
+                            <h2 class="form-control" id="aadhaar_number">{{var2}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h5 class="information mt-4">Travelling from:</h5>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="from_state">State</label>
+                            <h2 class="form-control" id="from_state">{{var3}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="from_district">District</label>
+                            <h2 class="form-control" id="from_district">{{var4}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <h5 class="information mt-4">Travelling to:</h5>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="to_state">State</label>
+                            <h2 class="form-control" id="to_state">{{var5}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="to_district">District</label>
+                            <h2 class="form-control" id="to_district">{{var6}}</h2>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="mobile_number">Mobile number</label>
+                            <h2 class="form-control" id="mobile_number">{{var7}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="from_date">From date</label>
+                            <h2 class="form-control" id="from_date">{{var8}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="to_date">To date</label>
+                            <h2 class="form-control" id="to_date">{{var9}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <label class="form-control" for="status">Status</label>
+                            <h2 class="form-control" id="status">{{var10}}</h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
